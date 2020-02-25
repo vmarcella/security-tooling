@@ -8,6 +8,8 @@ import http.server
 import os
 import socketserver
 
+import git_repo
+
 
 # TODO have this class pass the directory of the script into the http handler as
 # to deliver the correct static content.
