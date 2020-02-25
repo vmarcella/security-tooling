@@ -182,3 +182,6 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/linux,python,cpp,c,php,javascript
+
+# Ignore all bazel files.
+bazel-*
