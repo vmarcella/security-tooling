@@ -5,7 +5,15 @@ This tool is only meant for local use.
 """
 import argparse
 import http.server
+import os
 import socketserver
+
+
+# TODO have this class pass the directory of the script into the http handler as
+# to deliver the correct static content.
+class __CustomRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
 
 def __parse_args() -> argparse.Namespace:
@@ -17,9 +25,8 @@ def __parse_args() -> argparse.Namespace:
 def __main() -> None:
     args = __parse_args()
 
-    Http_handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", args.port), Http_handler) as httpd:
-        print(f"Validating IPs on {args.port}")
+    with socketserver.TCPServer(("", args.port), __CustomRequestHandler) as httpd:
+        print(f"Validating IPs on: {args.port}")
         httpd.serve_forever()
 
 
