@@ -1,6 +1,8 @@
+package(default_visibility = ["//visibility:public"])
 load("@rules_python//python:defs.bzl", "py_binary")
 
 py_library(
-    name = "get_repo",
-    srcs = ["get_repo.py"],
+    name = "repo",
+    srcs = ["repo.py"],
+    imports = ["git_util"]
 )
